@@ -1,0 +1,45 @@
+{
+  "method": "Gini importance",
+  "features": [
+    {
+      "name": "tenure_months",
+      "importance": 0.241
+    },
+    {
+      "name": "total_spend",
+      "importance": 0.178
+    },
+    {
+      "name": "support_tickets",
+      "importance": 0.152
+    },
+    {
+      "name": "contract_type",
+      "importance": 0.121
+    },
+    {
+      "name": "monthly_spend",
+      "importance": 0.098
+    },
+    {
+      "name": "subscription",
+      "importance": 0.071
+    },
+    {
+      "name": "payment_method",
+      "importance": 0.052
+    },
+    {
+      "name": "age",
+      "importance": 0.043
+    },
+    {
+      "name": "location",
+      "importance": 0.028
+    },
+    {
+      "name": "gender",
+      "importance": 0.016
+    }
+  ]
+}

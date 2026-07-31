@@ -1,0 +1,133 @@
+{
+  "segments": [
+    {
+      "name": "Risiko Tinggi",
+      "size": 820,
+      "churn_risk": 0.68
+    },
+    {
+      "name": "Risiko Menengah",
+      "size": 1740,
+      "churn_risk": 0.34
+    },
+    {
+      "name": "Loyal",
+      "size": 2440,
+      "churn_risk": 0.09
+    }
+  ],
+  "strategies": [
+    {
+      "id": "s1",
+      "title": "Program Onboarding 90 Hari",
+      "icon": "Rocket",
+      "target_segment": "Pelanggan baru (<8 bln)",
+      "description": "Pendampingan intensif di masa awal berlangganan untuk menekan churn dini.",
+      "linked_factors": [
+        "tenure_months"
+      ],
+      "priority": "Tinggi",
+      "expected_impact": "↓ churn dini 15-20%"
+    },
+    {
+      "id": "s2",
+      "title": "Prioritas Layanan & Fast Response",
+      "icon": "Headphones",
+      "target_segment": "Pelanggan dgn komplain tinggi",
+      "description": "SLA respons cepat dan penanganan khusus bagi pelanggan yang sering mengajukan tiket.",
+      "linked_factors": [
+        "support_tickets"
+      ],
+      "priority": "Tinggi",
+      "expected_impact": "↑ kepuasan layanan"
+    },
+    {
+      "id": "s3",
+      "title": "Insentif Kontrak Tahunan",
+      "icon": "CalendarCheck",
+      "target_segment": "Pengguna kontrak bulanan",
+      "description": "Diskon dan benefit eksklusif untuk migrasi ke kontrak jangka panjang.",
+      "linked_factors": [
+        "contract_type",
+        "tenure_months"
+      ],
+      "priority": "Tinggi",
+      "expected_impact": "↑ retensi jangka panjang"
+    },
+    {
+      "id": "s4",
+      "title": "Program Loyalitas & Poin",
+      "icon": "Gift",
+      "target_segment": "Semua pelanggan aktif",
+      "description": "Akumulasi poin belanja yang dapat ditukar reward untuk mendorong repeat purchase.",
+      "linked_factors": [
+        "total_spend"
+      ],
+      "priority": "Sedang",
+      "expected_impact": "↑ total spend"
+    },
+    {
+      "id": "s5",
+      "title": "Voucher Reaktivasi",
+      "icon": "TicketPercent",
+      "target_segment": "Risiko menengah",
+      "description": "Voucher personal untuk pelanggan yang menunjukkan penurunan aktivitas.",
+      "linked_factors": [
+        "monthly_spend",
+        "total_spend"
+      ],
+      "priority": "Sedang",
+      "expected_impact": "↓ churn menengah"
+    },
+    {
+      "id": "s6",
+      "title": "Upgrade ke Premium",
+      "icon": "Crown",
+      "target_segment": "Pengguna Basic/Standard",
+      "description": "Penawaran upgrade dengan trial agar merasakan benefit tingkat Premium.",
+      "linked_factors": [
+        "subscription"
+      ],
+      "priority": "Sedang",
+      "expected_impact": "↑ loyalitas"
+    },
+    {
+      "id": "s7",
+      "title": "Cross-selling & Upselling",
+      "icon": "ShoppingBag",
+      "target_segment": "Pelanggan loyal",
+      "description": "Rekomendasi produk relevan untuk meningkatkan nilai transaksi.",
+      "linked_factors": [
+        "total_spend",
+        "monthly_spend"
+      ],
+      "priority": "Rendah",
+      "expected_impact": "↑ pendapatan/pelanggan"
+    },
+    {
+      "id": "s8",
+      "title": "Email Reminder Subscription",
+      "icon": "Mail",
+      "target_segment": "Menjelang jatuh tempo",
+      "description": "Pengingat otomatis perpanjangan dengan penawaran menarik.",
+      "linked_factors": [
+        "contract_type"
+      ],
+      "priority": "Rendah",
+      "expected_impact": "↓ churn akibat lupa"
+    },
+    {
+      "id": "s9",
+      "title": "Priority Customer Care",
+      "icon": "Star",
+      "target_segment": "Pelanggan bernilai tinggi",
+      "description": "Kanal khusus dan benefit VIP untuk menjaga pelanggan bernilai tinggi.",
+      "linked_factors": [
+        "total_spend",
+        "tenure_months"
+      ],
+      "priority": "Rendah",
+      "expected_impact": "↑ CLV"
+    }
+  ]
+}

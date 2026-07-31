@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Token warna terpusat.
+  Ganti nilai --brand / --brand-soft / --accent untuk menyesuaikan identitas
+  visual Revesery Store. Format RGB (tanpa koma) agar kompatibel dengan
+  utilitas opacity Tailwind (mis. bg-brand/10).
+*/
+:root {
+  --brand: 79 70 229;        /* indigo  #4F46E5 — warna brand utama */
+  --brand-soft: 129 140 248; /* indigo lembut untuk aksen/hover      */
+  --brand-fg: 255 255 255;   /* teks di atas warna brand             */
+  --accent: 14 165 233;      /* sky #0EA5E9 — aksen sekunder         */
+  --churn: 239 68 68;        /* merah — churn / risiko               */
+  --retain: 16 185 129;      /* hijau — retensi / aktif              */
+  --warn: 245 158 11;        /* amber — peringatan                   */
+
+  /* Light mode surfaces */
+  --bg: 248 250 252;
+  --surface: 255 255 255;
+  --surface-2: 248 250 252;
+  --border: 226 232 240;
+  --fg: 15 23 42;
+  --muted: 100 116 139;
+}
+
+.dark {
+  /* Dark mode surfaces — abu kebiruan yang tenang & premium */
+  --bg: 8 11 20;
+  --surface: 17 22 36;
+  --surface-2: 24 31 48;
+  --border: 39 48 71;
+  --fg: 226 232 240;
+  --muted: 148 163 184;
+  --brand-soft: 129 140 248;
+}
+
+* { border-color: rgb(var(--border)); }
+
+html { scroll-behavior: smooth; }
+
+body {
+  @apply bg-bg text-fg font-sans antialiased;
+  font-feature-settings: "cv11", "ss01";
+}
+
+/* Scrollbar halus yang menyatu dengan tema */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--border));
+  border-radius: 8px;
+  border: 2px solid rgb(var(--bg));
+}
+::-webkit-scrollbar-thumb:hover { background: rgb(var(--muted)); }
+
+/* Fokus keyboard yang terlihat jelas (aksesibilitas) */
+:focus-visible {
+  outline: 2px solid rgb(var(--brand));
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Hormati preferensi reduce-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Kelas utilitas komponen */
+@layer components {
+  .card {
+    @apply bg-surface border border-border rounded-2xl shadow-card;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+  .skeleton {
+    @apply relative overflow-hidden bg-surface-2 rounded-lg;
+  }
+  .skeleton::after {
+    @apply absolute inset-0 -translate-x-full animate-shimmer;
+    content: "";
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(var(--fg) / 0.06),
+      transparent
+    );
+  }
+}
+
+/* Container Plotly agar responsif penuh */
+.js-plotly-plot,
+.plot-container { width: 100% !important; }

@@ -1,0 +1,73 @@
+{
+  "dominant_factor": {
+    "feature": "Tenure (lama berlangganan)",
+    "description": "Pelanggan dengan masa berlangganan singkat (di bawah 8 bulan) memiliki probabilitas churn tertinggi. Ini menjadi faktor tunggal paling menentukan dalam model."
+  },
+  "top_factors": [
+    {
+      "feature": "tenure_months",
+      "impact": 0.241,
+      "direction": "decrease",
+      "description": "Semakin lama berlangganan, semakin kecil risiko churn."
+    },
+    {
+      "feature": "support_tickets",
+      "impact": 0.152,
+      "direction": "increase",
+      "description": "Banyaknya komplain layanan meningkatkan risiko churn secara signifikan."
+    },
+    {
+      "feature": "total_spend",
+      "impact": 0.178,
+      "direction": "decrease",
+      "description": "Total belanja tinggi menandakan loyalitas dan menurunkan churn."
+    },
+    {
+      "feature": "contract_type",
+      "impact": 0.121,
+      "direction": "increase",
+      "description": "Kontrak bulanan jauh lebih rentan churn dibanding tahunan."
+    },
+    {
+      "feature": "monthly_spend",
+      "impact": 0.098,
+      "direction": "increase",
+      "description": "Tagihan bulanan tinggi tanpa kontrak panjang menaikkan risiko."
+    },
+    {
+      "feature": "subscription",
+      "impact": 0.071,
+      "direction": "decrease",
+      "description": "Pelanggan Premium cenderung lebih bertahan."
+    },
+    {
+      "feature": "payment_method",
+      "impact": 0.052,
+      "direction": "increase",
+      "description": "Metode COD berasosiasi dengan churn lebih tinggi."
+    },
+    {
+      "feature": "age",
+      "impact": 0.043,
+      "direction": "decrease",
+      "description": "Pelanggan usia lebih matang relatif lebih loyal."
+    },
+    {
+      "feature": "location",
+      "impact": 0.028,
+      "direction": "increase",
+      "description": "Beberapa kota menunjukkan churn di atas rata-rata."
+    },
+    {
+      "feature": "gender",
+      "impact": 0.016,
+      "direction": "decrease",
+      "description": "Gender berpengaruh sangat kecil terhadap churn."
+    }
+  ],
+  "narrative": [
+    "Analisis SHAP mengonfirmasi bahwa lama berlangganan (tenure) merupakan penentu utama churn di Revesery Store. Pelanggan baru berada pada masa paling rawan, sehingga periode onboarding menjadi titik intervensi paling strategis.",
+    "Faktor pengalaman layanan — direpresentasikan oleh jumlah support tickets — menempati posisi kedua. Hal ini menegaskan bahwa kualitas layanan pasca-pembelian berdampak langsung terhadap keputusan pelanggan untuk bertahan.",
+    "Variabel finansial seperti total_spend dan contract_type menunjukkan bahwa komitmen jangka panjang (kontrak tahunan) dan keterlibatan belanja yang tinggi berperan sebagai pelindung terhadap churn. Temuan ini menjadi dasar perumusan strategi retensi pada halaman berikutnya."
+  ]
+}

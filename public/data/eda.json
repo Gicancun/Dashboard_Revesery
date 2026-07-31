@@ -1,0 +1,373 @@
+{
+  "churn_distribution": [
+    {
+      "label": "Bertahan",
+      "count": 3660
+    },
+    {
+      "label": "Churn",
+      "count": 1340
+    }
+  ],
+  "categorical": [
+    {
+      "feature": "Gender",
+      "categories": [
+        "Pria",
+        "Wanita"
+      ],
+      "churn": [
+        253,
+        232
+      ],
+      "retain": [
+        618,
+        410
+      ]
+    },
+    {
+      "feature": "Contract Type",
+      "categories": [
+        "Bulanan",
+        "6 Bulan",
+        "Tahunan"
+      ],
+      "churn": [
+        509,
+        163,
+        294
+      ],
+      "retain": [
+        889,
+        684,
+        706
+      ]
+    },
+    {
+      "feature": "Subscription",
+      "categories": [
+        "Basic",
+        "Standard",
+        "Premium"
+      ],
+      "churn": [
+        291,
+        169,
+        124
+      ],
+      "retain": [
+        548,
+        404,
+        608
+      ]
+    },
+    {
+      "feature": "Payment Method",
+      "categories": [
+        "Transfer Bank",
+        "E-Wallet",
+        "Kartu Kredit",
+        "COD"
+      ],
+      "churn": [
+        301,
+        108,
+        247,
+        256
+      ],
+      "retain": [
+        879,
+        342,
+        655,
+        845
+      ]
+    },
+    {
+      "feature": "Location",
+      "categories": [
+        "Jakarta",
+        "Bandung",
+        "Surabaya",
+        "Depok",
+        "Medan",
+        "Semarang"
+      ],
+      "churn": [
+        341,
+        277,
+        195,
+        434,
+        181,
+        395
+      ],
+      "retain": [
+        730,
+        801,
+        408,
+        743,
+        670,
+        770
+      ]
+    }
+  ],
+  "histograms": [
+    {
+      "feature": "Age",
+      "bins": [
+        "18-25",
+        "26-33",
+        "34-41",
+        "42-49",
+        "50-60"
+      ],
+      "counts": [
+        671,
+        615,
+        596,
+        566,
+        394
+      ],
+      "by_class": {
+        "churn": [
+          260,
+          255,
+          104,
+          228,
+          135
+        ],
+        "retain": [
+          411,
+          360,
+          492,
+          338,
+          259
+        ]
+      }
+    },
+    {
+      "feature": "Tenure (bulan)",
+      "bins": [
+        "0-8",
+        "9-16",
+        "17-24",
+        "25-32",
+        "33-48"
+      ],
+      "counts": [
+        595,
+        508,
+        464,
+        149,
+        626
+      ],
+      "by_class": {
+        "churn": [
+          229,
+          333,
+          198,
+          33,
+          239
+        ],
+        "retain": [
+          474,
+          286,
+          266,
+          116,
+          387
+        ]
+      }
+    },
+    {
+      "feature": "Monthly Spend",
+      "bins": [
+        "<75",
+        "75-150",
+        "150-225",
+        "225-300",
+        ">300"
+      ],
+      "counts": [
+        402,
+        689,
+        130,
+        649,
+        315
+      ],
+      "by_class": {
+        "churn": [
+          189,
+          171,
+          43,
+          153,
+          82
+        ],
+        "retain": [
+          213,
+          518,
+          87,
+          496,
+          233
+        ]
+      }
+    },
+    {
+      "feature": "Total Spend",
+      "bins": [
+        "<1jt",
+        "1-3jt",
+        "3-6jt",
+        "6-10jt",
+        ">10jt"
+      ],
+      "counts": [
+        622,
+        578,
+        137,
+        215,
+        421
+      ],
+      "by_class": {
+        "churn": [
+          499,
+          225,
+          54,
+          64,
+          141
+        ],
+        "retain": [
+          359,
+          428,
+          83,
+          151,
+          280
+        ]
+      }
+    }
+  ],
+  "boxplots": [
+    {
+      "feature": "Tenure per status churn",
+      "groups": [
+        {
+          "label": "Bertahan",
+          "min": 2,
+          "q1": 14,
+          "median": 24,
+          "q3": 36,
+          "max": 48
+        },
+        {
+          "label": "Churn",
+          "min": 1,
+          "q1": 3,
+          "median": 6,
+          "q3": 11,
+          "max": 22
+        }
+      ]
+    },
+    {
+      "feature": "Monthly Spend per status",
+      "groups": [
+        {
+          "label": "Bertahan",
+          "min": 45,
+          "q1": 110,
+          "median": 165,
+          "q3": 230,
+          "max": 320
+        },
+        {
+          "label": "Churn",
+          "min": 48,
+          "q1": 95,
+          "median": 140,
+          "q3": 205,
+          "max": 300
+        }
+      ]
+    }
+  ],
+  "correlation": {
+    "labels": [
+      "age",
+      "tenure",
+      "monthly",
+      "total",
+      "tickets",
+      "churn"
+    ],
+    "matrix": [
+      [
+        1.0,
+        0.22,
+        -0.19,
+        -0.09,
+        0.18,
+        0.08
+      ],
+      [
+        0.22,
+        1.0,
+        -0.09,
+        0.71,
+        0.01,
+        -0.62
+      ],
+      [
+        -0.15,
+        0.23,
+        1.0,
+        0.44,
+        0.01,
+        0.31
+      ],
+      [
+        -0.08,
+        0.71,
+        0.44,
+        1.0,
+        -0.03,
+        -0.48
+      ],
+      [
+        0.07,
+        0.23,
+        0.12,
+        0.15,
+        1.0,
+        0.55
+      ],
+      [
+        -0.13,
+        -0.62,
+        0.31,
+        -0.48,
+        0.55,
+        1.0
+      ]
+    ]
+  },
+  "missing_matrix": {
+    "columns": [
+      "customer_id",
+      "gender",
+      "age",
+      "location",
+      "tenure_months",
+      "subscription",
+      "contract_type",
+      "payment_method"
+    ],
+    "missing_pct": [
+      0,
+      0,
+      0,
+      0,
+      0.4,
+      0,
+      1.2,
+      0
+    ]
+  }
+}
