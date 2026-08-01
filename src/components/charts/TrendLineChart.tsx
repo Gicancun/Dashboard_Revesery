@@ -6,20 +6,22 @@ import {
   LineElement, Filler, Tooltip, Legend,
 } from "chart.js";
 import { ChartFrame } from "./ChartFrame";
+import { useChartTheme } from "@/hooks/useChartTheme";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
 interface Point { label: string; total: number; churned: number; }
 
 export function TrendLineChart({ data, height = 300 }: { data: Point[]; height?: number }) {
-  const BRAND   = "rgba(139, 92, 246, 1)";    // violet-500
-  const BRAND_F = "rgba(139, 92, 246, 0.18)";
-  const CHURN   = "rgba(248, 113, 113, 1)";    // red-400
-  const CHURN_F = "rgba(248, 113, 113, 0.18)";
-  const GRID    = "rgba(139, 92, 246, 0.12)";
-  const TEXT    = "rgba(139, 92, 246, 0.9)";
-  const SURF    = "#0e0a23";
-  const FG      = "#ede9fe";
+  const t = useChartTheme();
+  const BRAND   = t.brand;
+  const BRAND_F = t.brandFill;
+  const CHURN   = t.churn;
+  const CHURN_F = t.churnFill;
+  const GRID    = t.grid;
+  const TEXT    = t.text;
+  const SURF    = t.surface;
+  const FG      = t.fg;
 
   return (
     <ChartFrame height={height}>
@@ -76,7 +78,7 @@ export function TrendLineChart({ data, height = 300 }: { data: Point[]; height?:
               backgroundColor: SURF,
               titleColor: FG,
               bodyColor: FG,
-              borderColor: "rgba(139,92,246,0.3)",
+              borderColor: GRID,
               borderWidth: 1,
               padding: 12,
               callbacks: {

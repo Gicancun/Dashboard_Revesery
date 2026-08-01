@@ -11,7 +11,7 @@ export function Topbar({ onMenu }: { onMenu: () => void }) {
   const { isLive } = useApiData("status");
 
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-border/80 bg-bg/80 px-4 backdrop-blur-xl sm:px-6">
+    <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-border bg-bg/90 px-4 backdrop-blur-sm sm:px-6">
       <button
         onClick={onMenu}
         aria-label="Buka menu"
@@ -20,7 +20,7 @@ export function Topbar({ onMenu }: { onMenu: () => void }) {
         <Menu className="h-4.5 w-4.5" />
       </button>
       <div className="min-w-0 flex-1">
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-soft">
+        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted">
           <span>Revesery</span>
           <span>/</span>
           <span>{active?.section ?? "Dashboard"}</span>

@@ -29,7 +29,7 @@ export default function About() {
         {(r) => (
           <div className="space-y-6">
             {/* Judul */}
-            <Card delay={0} className="bg-gradient-to-br from-brand/[0.07] to-transparent">
+            <Card delay={0} className="bg-brand/[0.04]">
               <span className="chip bg-brand/10 text-brand"><GraduationCap className="h-3.5 w-3.5" /> Skripsi · {r.year}</span>
               <h2 className="mt-3 font-display text-xl font-bold leading-snug text-fg sm:text-2xl">{r.title}</h2>
             </Card>

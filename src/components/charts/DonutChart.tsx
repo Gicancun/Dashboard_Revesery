@@ -5,6 +5,7 @@ import {
   ArcElement, Tooltip, Legend,
 } from "chart.js";
 import { ChartFrame } from "./ChartFrame";
+import { useChartTheme } from "@/hooks/useChartTheme";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -12,17 +13,12 @@ interface Slice { label: string; count: number; }
 
 // Palette default — explicit hex agar Chart.js bisa parse langsung
 const DEFAULT_PALETTE = [
-  "#f87171", // red-400  (churn)
-  "#34d399", // emerald-400 (retain)
-  "#8b5cf6", // violet-500 (brand)
-  "#22d3ee", // cyan-400 (accent)
-  "#fbbf24", // amber-400 (warn)
+  "#ef4444", // red-500  (churn)
+  "#10b981", // emerald-500 (retain)
+  "#4f46e5", // indigo-600 (brand)
+  "#0ea5e9", // sky-500 (accent)
+  "#f59e0b", // amber-500 (warn)
 ];
-
-const SURF = "#0e0a23";
-const FG   = "#ede9fe";
-const GRID = "rgba(139, 92, 246, 0.25)";
-const TEXT = "rgba(167, 139, 250, 0.9)";
 
 export function DonutChart({
   data,
@@ -35,15 +31,21 @@ export function DonutChart({
   height?: number;
   colors?: string[];
 }) {
+  const t = useChartTheme();
+  const SURF = t.surface;
+  const FG   = t.fg;
+  const GRID = t.grid;
+  const TEXT = t.text;
+
   // Konversi warna CSS var jika perlu — gunakan hardcoded hex saat tidak ada warna eksplisit
   const resolveColor = (c: string): string => {
     if (c.startsWith("rgb(var(")) {
       // mapping CSS variable ke hex statis
-      if (c.includes("--churn"))  return "#f87171";
-      if (c.includes("--retain")) return "#34d399";
-      if (c.includes("--brand"))  return "#8b5cf6";
-      if (c.includes("--accent")) return "#22d3ee";
-      if (c.includes("--warn"))   return "#fbbf24";
+      if (c.includes("--churn"))  return "#ef4444";
+      if (c.includes("--retain")) return "#10b981";
+      if (c.includes("--brand"))  return "#4f46e5";
+      if (c.includes("--accent")) return "#0ea5e9";
+      if (c.includes("--warn"))   return "#f59e0b";
     }
     return c;
   };

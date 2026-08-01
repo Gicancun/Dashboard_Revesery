@@ -14,7 +14,7 @@ const grouped = navItems.reduce<Record<string, typeof navItems>>((acc, item) => 
 function Brand() {
   return (
     <div className="flex items-center gap-3 px-3 py-1">
-      <div className="relative grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-tr from-brand to-accent text-white shadow-lg shadow-brand/25">
+      <div className="relative grid h-10 w-10 place-items-center rounded-xl bg-brand text-white shadow-sm">
         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round">
           <path d="M6 18v-5M12 18V7M18 18v-8" />
         </svg>
@@ -25,7 +25,7 @@ function Brand() {
       </div>
       <div className="leading-tight">
         <div className="font-display text-base font-extrabold text-fg tracking-tight">Revesery</div>
-        <div className="text-[11px] font-medium text-brand-soft">Churn Intelligence</div>
+        <div className="text-[11px] font-medium text-muted">Churn Intelligence</div>
       </div>
     </div>
   );
@@ -78,7 +78,7 @@ export function Sidebar({ open, onClose }: { open: boolean; onClose: () => void 
   return (
     <>
       {/* Desktop: sidebar tetap */}
-      <aside className="hidden w-64 shrink-0 border-r border-border/80 bg-surface/70 backdrop-blur-xl lg:block">
+      <aside className="hidden w-64 shrink-0 border-r border-border bg-surface lg:block">
         <div className="sticky top-0 flex h-screen flex-col overflow-y-auto py-5">
           <Brand />
           <NavList />

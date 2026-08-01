@@ -26,7 +26,7 @@ export default function BusinessInsight() {
           return (
             <div className="space-y-6">
               {/* Faktor dominan */}
-              <Card delay={0} className="border-brand/30 bg-gradient-to-br from-brand/[0.06] to-transparent">
+              <Card delay={0} className="border-brand/30 bg-brand/[0.04]">
                 <div className="flex items-start gap-4">
                   <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand text-brand-fg"><Crown className="h-6 w-6" /></span>
                   <div>

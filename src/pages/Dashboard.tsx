@@ -41,26 +41,25 @@ export default function Dashboard() {
         {(m) => (
           <div className="space-y-6">
             {/* Hero Summary Banner */}
-            <div className="relative overflow-hidden rounded-2xl border border-brand/20 bg-gradient-to-r from-brand/20 via-surface to-surface p-6 backdrop-blur-xl sm:p-8">
-              <div className="absolute -right-12 -top-12 h-64 w-64 rounded-full bg-brand/10 blur-3xl pointer-events-none" />
+            <div className="relative overflow-hidden rounded-2xl border border-border bg-surface p-6 sm:p-8">
               <div className="relative z-10 flex flex-col justify-between gap-6 md:flex-row md:items-center">
                 <div>
-                  <span className="chip bg-brand/15 text-brand-soft border border-brand/20 mb-3 inline-flex">
+                  <span className="chip bg-brand/10 text-brand border border-brand/20 mb-3 inline-flex">
                     <Sparkles className="h-3.5 w-3.5" /> Model Performance Overview
                   </span>
                   <h2 className="font-display text-2xl font-extrabold text-fg sm:text-3xl">
                     Performa Model Random Forest: <span className="text-gradient">ROC-AUC {score(m.model.roc_auc)}</span>
                   </h2>
                   <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
-                    Dari total <strong className="text-fg">{m.total_customers.toLocaleString("id-ID")}</strong> pelanggan, terdeteksi <strong className="text-churn">{m.churned_customers.toLocaleString("id-ID")}</strong> ({pct(m.churn_rate)}) mengalami churn. Model berhasil memprediksi pelanggan churn dengan F1-Score <strong className="text-brand-soft">{score(m.model.f1_score)}</strong>.
+                    Dari total <strong className="text-fg">{m.total_customers.toLocaleString("id-ID")}</strong> pelanggan, terdeteksi <strong className="text-churn">{m.churned_customers.toLocaleString("id-ID")}</strong> ({pct(m.churn_rate)}) mengalami churn. Model berhasil memprediksi pelanggan churn dengan F1-Score <strong className="text-brand">{score(m.model.f1_score)}</strong>.
                   </p>
                 </div>
                 <div className="flex shrink-0 items-center gap-3">
-                  <div className="rounded-2xl border border-border bg-surface/80 p-4 text-center backdrop-blur-md">
+                  <div className="rounded-2xl border border-border bg-surface-2/60 p-4 text-center">
                     <div className="text-xs font-semibold text-muted uppercase">Recall</div>
                     <div className="font-display text-2xl font-bold text-retain tabular-nums">{score(m.model.recall)}</div>
                   </div>
-                  <div className="rounded-2xl border border-border bg-surface/80 p-4 text-center backdrop-blur-md">
+                  <div className="rounded-2xl border border-border bg-surface-2/60 p-4 text-center">
                     <div className="text-xs font-semibold text-muted uppercase">Precision</div>
                     <div className="font-display text-2xl font-bold text-accent tabular-nums">{score(m.model.precision)}</div>
                   </div>
@@ -192,7 +191,7 @@ export default function Dashboard() {
                       </div>
                       <div className="mt-1.5 font-display text-2xl font-bold text-fg tabular-nums">{score(val as number)}</div>
                       <div className="mt-2.5 h-1.5 overflow-hidden rounded-full bg-border/60">
-                        <div className="h-full rounded-full bg-gradient-to-r from-brand to-accent transition-all duration-500" style={{ width: `${(val as number) * 100}%` }} />
+                        <div className="h-full rounded-full bg-brand transition-all duration-500" style={{ width: `${(val as number) * 100}%` }} />
                       </div>
                       <div className="mt-2 text-[10px] text-muted/70">{desc as string}</div>
                     </div>
