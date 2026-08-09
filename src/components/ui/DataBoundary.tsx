@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export function DataBoundary<T>({
   state, skeleton, children,
 }: {
-  state: { data: T | null; loading: boolean; error: string | null; waiting?: boolean; noDataYet?: boolean };
+  state: { data: T | null; loading: boolean; error: string | null; waiting?: boolean; noDataYet?: boolean; refetch?: () => void };
   skeleton: ReactNode;
   children: (data: T) => ReactNode;
 }) {
@@ -42,7 +42,7 @@ export function DataBoundary<T>({
     );
   }
   if (state.loading) return <>{skeleton}</>;
-  if (state.error || !state.data) return <ErrorState message={state.error ?? "Data kosong."} />;
+  if (state.error || !state.data) return <ErrorState message={state.error ?? "Data kosong."} onRetry={state.refetch} />;
   return <>{children(state.data)}</>;
 }
 

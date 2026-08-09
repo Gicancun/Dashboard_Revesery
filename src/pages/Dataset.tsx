@@ -11,9 +11,8 @@ import { AcademicNote } from "@/components/ui/AcademicNote";
 import { DataTable } from "@/components/ui/DataTable";
 import { DonutChart } from "@/components/charts/DonutChart";
 import { nf } from "@/utils/format";
+import { apiUrl, readErrorDetail } from "@/utils/api";
 import type { DatasetInfo } from "@/types";
-
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8000/api";
 
 function StatTile({ icon: Icon, label, value }: { icon: typeof Rows3; label: string; value: string }) {
   return (
@@ -41,33 +40,32 @@ function ExcelUploader({ onUploaded }: { onUploaded: () => void }) {
       return;
     }
 
-    if (!API_BASE) {
-      setStatusMsg({ type: "error", text: "Backend FastAPI belum terhubung. Konfigurasi VITE_API_BASE di .env.local untuk upload live." });
-      return;
-    }
-
     setUploading(true);
     try {
       const formData = new FormData();
       formData.append("file", file);
 
-      const res = await fetch(`${API_BASE.replace(/\/$/, "")}/upload`, {
+      const res = await fetch(apiUrl("upload"), {
         method: "POST",
         body: formData,
       });
 
       if (!res.ok) {
-        const err = await res.json().catch(() => ({ detail: "Gagal mengunggah file." }));
-        throw new Error(err.detail || `HTTP ${res.status}`);
+        // 400 (bukan .xlsx), 409 (pipeline lain berjalan), 413 (terlalu besar), 401, 422, 500 —
+        // semua kirim `detail` yang actionable, tampilkan apa adanya.
+        const detail = await readErrorDetail(res);
+        throw new Error(detail ?? `Gagal mengunggah file (HTTP ${res.status}).`);
       }
 
       setStatusMsg({
         type: "success",
         text: `File "${file.name}" berhasil diunggah! Engine Machine Learning sedang mengolah ulang data...`,
       });
-      setTimeout(() => {
-        onUploaded();
-      }, 1500);
+      // Refetch SEKARANG (bukan ditunda) supaya banner error lama langsung hilang
+      // begitu upload sukses, alih-alih nyangkut berdampingan dengan pesan sukses
+      // di atas selama beberapa detik. useApiData akan otomatis poll tiap 3 detik
+      // selama backend melaporkan status 503 "masih training".
+      onUploaded();
     } catch (err) {
       setStatusMsg({ type: "error", text: (err as Error).message });
     } finally {
