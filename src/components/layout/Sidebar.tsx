@@ -14,14 +14,10 @@ const grouped = navItems.reduce<Record<string, typeof navItems>>((acc, item) => 
 function Brand() {
   return (
     <div className="flex items-center gap-3 px-3 py-1">
-      <div className="relative grid h-10 w-10 place-items-center rounded-xl bg-brand text-white shadow-sm">
+      <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand text-brand-fg">
         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round">
           <path d="M6 18v-5M12 18V7M18 18v-8" />
         </svg>
-        <span className="absolute -right-0.5 -top-0.5 flex h-2.5 w-2.5">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-          <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
-        </span>
       </div>
       <div className="leading-tight">
         <div className="font-display text-base font-extrabold text-fg tracking-tight">Revesery</div>
@@ -54,13 +50,13 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
               >
                 {({ isActive }) => (
                   <>
-                    <Icon className={`h-4.5 w-4.5 shrink-0 transition-transform duration-200 group-hover:scale-110 ${isActive ? "text-brand-soft" : "text-muted group-hover:text-fg"}`} strokeWidth={2.1} />
+                    <Icon className={`h-4.5 w-4.5 shrink-0 ${isActive ? "text-brand-soft" : "text-muted group-hover:text-fg"}`} strokeWidth={2.1} />
                     <span className="truncate">{label}</span>
                     {isActive && (
                       <motion.span
                         layoutId="activePill"
                         className="absolute left-0 top-1/2 h-5 w-1 -translate-y-1/2 rounded-r-full bg-brand"
-                        transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                        transition={{ type: "tween", duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                       />
                     )}
                   </>

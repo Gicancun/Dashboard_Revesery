@@ -6,7 +6,7 @@ import type { ShapData } from "@/types";
 
 export function ShapDecision({ data, height = 440 }: { data: NonNullable<ShapData["decision"]>; height?: number }) {
   const y = data.features;
-  const palette = ["#4F46E5", "#ef4444", "#10b981", "#0ea5e9", "#f59e0b"];
+  const palette = ["#18181b", "#ef4444", "#10b981", "#0ea5e9", "#f59e0b"];
   const traces: Data[] = data.paths.map((p, i) => ({
     type: "scatter",
     mode: "lines+markers",

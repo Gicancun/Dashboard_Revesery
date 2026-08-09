@@ -4,11 +4,11 @@ import type { LucideIcon } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
 
 type Tone = "brand" | "churn" | "retain" | "accent";
-const toneMap: Record<Tone, { text: string; bg: string; glow: string }> = {
-  brand: { text: "text-brand-soft", bg: "bg-brand/15 border border-brand/20", glow: "hover:border-brand/40" },
-  churn: { text: "text-churn", bg: "bg-churn/15 border border-churn/20", glow: "hover:border-churn/40" },
-  retain: { text: "text-retain", bg: "bg-retain/15 border border-retain/20", glow: "hover:border-retain/40" },
-  accent: { text: "text-accent", bg: "bg-accent/15 border border-accent/20", glow: "hover:border-accent/40" },
+const toneMap: Record<Tone, { text: string; bg: string; hoverBorder: string }> = {
+  brand: { text: "text-brand-soft", bg: "bg-brand/10 border border-brand/15", hoverBorder: "hover:border-brand/30" },
+  churn: { text: "text-churn", bg: "bg-churn/10 border border-churn/15", hoverBorder: "hover:border-churn/30" },
+  retain: { text: "text-retain", bg: "bg-retain/10 border border-retain/15", hoverBorder: "hover:border-retain/30" },
+  accent: { text: "text-accent", bg: "bg-accent/10 border border-accent/15", hoverBorder: "hover:border-accent/30" },
 };
 
 interface KpiCardProps {
@@ -34,11 +34,11 @@ export function KpiCard({
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={`card card-glass group p-5 transition-all duration-300 hover:-translate-y-1 ${t.glow}`}
+      className={`card card-glass p-5 ${t.hoverBorder}`}
     >
       <div className="flex items-center justify-between">
         <span className="text-xs font-semibold uppercase tracking-wider text-muted/80">{label}</span>
-        <span className={`grid h-10 w-10 place-items-center rounded-xl transition-transform duration-300 group-hover:scale-110 ${t.bg}`}>
+        <span className={`grid h-10 w-10 place-items-center rounded-xl ${t.bg}`}>
           <Icon className={`h-5 w-5 ${t.text}`} strokeWidth={2.2} />
         </span>
       </div>

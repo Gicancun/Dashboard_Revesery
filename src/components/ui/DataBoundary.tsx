@@ -13,8 +13,8 @@ export function DataBoundary<T>({
 }) {
   if (state.noDataYet) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-2xl border border-brand/30 bg-surface-2/40 p-12 text-center backdrop-blur-md">
-        <div className="grid h-16 w-16 place-items-center rounded-2xl bg-brand/15 border border-brand/30 text-brand-soft">
+      <div className="flex flex-col items-center justify-center rounded-2xl border border-border bg-surface-2/60 p-12 text-center">
+        <div className="grid h-16 w-16 place-items-center rounded-2xl bg-brand/10 border border-brand/20 text-brand-soft">
           <UploadCloud className="h-8 w-8" />
         </div>
         <h3 className="mt-4 font-display text-xl font-bold text-fg">Belum Ada Data Dihitung</h3>
@@ -23,7 +23,7 @@ export function DataBoundary<T>({
         </p>
         <Link
           to="/dataset"
-          className="mt-6 inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:scale-105"
+          className="mt-6 inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-brand-fg transition-colors hover:bg-brand-soft"
         >
           <UploadCloud className="h-4 w-4" /> Unggah Dataset Excel Now
         </Link>
@@ -32,7 +32,7 @@ export function DataBoundary<T>({
   }
   if (state.waiting) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-2xl border border-brand/20 bg-surface/50 p-12 text-center backdrop-blur-md">
+      <div className="flex flex-col items-center justify-center rounded-2xl border border-border bg-surface p-12 text-center">
         <Loader2 className="h-10 w-10 animate-spin text-brand" />
         <h3 className="mt-4 font-display text-lg font-bold text-fg">Memproses Model ML & Pipeline...</h3>
         <p className="mt-1 max-w-md text-sm text-muted">

@@ -61,7 +61,7 @@ export default function Dashboard() {
                   </div>
                   <div className="rounded-2xl border border-border bg-surface-2/60 p-4 text-center">
                     <div className="text-xs font-semibold text-muted uppercase">Precision</div>
-                    <div className="font-display text-2xl font-bold text-accent tabular-nums">{score(m.model.precision)}</div>
+                    <div className="font-display text-2xl font-bold text-fg tabular-nums">{score(m.model.precision)}</div>
                   </div>
                 </div>
               </div>
@@ -73,8 +73,8 @@ export default function Dashboard() {
               <KpiCard label="Customer Churn" value={m.churned_customers} icon={UserMinus} tone="churn" delay={0.05} />
               <KpiCard label="Churn Rate" value={m.churn_rate} icon={TrendingDown} tone="churn" format={(v) => pct(v)} delay={0.1} />
               <KpiCard label="Customer Aktif" value={m.active_customers} icon={Activity} tone="retain" delay={0.15} />
-              <KpiCard label="Accuracy Model" value={m.model.accuracy} icon={Gauge} tone="accent" format={score} delay={0.2} />
-              <KpiCard label="Precision" value={m.model.precision} icon={Crosshair} tone="accent" format={score} delay={0.25} />
+              <KpiCard label="Accuracy Model" value={m.model.accuracy} icon={Gauge} tone="brand" format={score} delay={0.2} />
+              <KpiCard label="Precision" value={m.model.precision} icon={Crosshair} tone="brand" format={score} delay={0.25} />
               <KpiCard label="Recall" value={m.model.recall} icon={Radar} tone="retain" format={score} delay={0.3} />
               <KpiCard label="F1 · ROC-AUC" value={m.model.f1_score} icon={Target} tone="brand"
                 format={(v) => `${score(v)} · ${score(m.model.roc_auc)}`} delay={0.35} hint="F1 Score · ROC-AUC" />
@@ -114,7 +114,7 @@ export default function Dashboard() {
                     { label: "Churn", count: m.churned_customers },
                     { label: "Aktif", count: m.active_customers },
                   ]}
-                  colors={["#f87171", "#34d399"]}
+                  colors={["rgb(var(--churn))", "rgb(var(--retain))"]}
                   height={200}
                 />
                 <div className="mt-3 grid grid-cols-2 gap-2">
@@ -149,7 +149,7 @@ export default function Dashboard() {
                     { label: "Aktif", count: m.active_customers },
                     { label: "Churn", count: m.churned_customers },
                   ]}
-                  colors={["#34d399", "#f87171"]}
+                  colors={["rgb(var(--retain))", "rgb(var(--churn))"]}
                   height={200}
                 />
                 {/* Stat bawah donut */}

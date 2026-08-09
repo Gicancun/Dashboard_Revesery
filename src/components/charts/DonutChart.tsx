@@ -15,7 +15,7 @@ interface Slice { label: string; count: number; }
 const DEFAULT_PALETTE = [
   "#ef4444", // red-500  (churn)
   "#10b981", // emerald-500 (retain)
-  "#4f46e5", // indigo-600 (brand)
+  "#f0f0f0", // zinc-900 (brand — netral)
   "#0ea5e9", // sky-500 (accent)
   "#f59e0b", // amber-500 (warn)
 ];
@@ -41,8 +41,8 @@ export function DonutChart({
   const resolveColor = (c: string): string => {
     if (c.startsWith("rgb(var(")) {
       // mapping CSS variable ke hex statis
-      if (c.includes("--churn"))  return "#ef4444";
-      if (c.includes("--retain")) return "#10b981";
+      if (c.includes("--churn"))  return "#44ef55";
+      if (c.includes("--retain")) return "#0f20de";
       if (c.includes("--brand"))  return "#4f46e5";
       if (c.includes("--accent")) return "#0ea5e9";
       if (c.includes("--warn"))   return "#f59e0b";

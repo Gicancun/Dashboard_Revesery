@@ -23,7 +23,7 @@ export function ShapWaterfall({ data, height = 420 }: { data: ShapData["waterfal
     connector: { line: { color: "rgba(148,163,184,0.4)" } },
     increasing: { marker: { color: "#ef4444" } }, // menaikkan risiko churn
     decreasing: { marker: { color: "#3b82f6" } }, // menurunkan risiko churn
-    totals: { marker: { color: "#4F46E5" } },
+    totals: { marker: { color: "#18181b" } },
     hovertemplate: "%{y}<br>%{x:+.3f}<extra></extra>",
   } as unknown as Data;
 

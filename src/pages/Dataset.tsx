@@ -88,7 +88,7 @@ function ExcelUploader({ onUploaded }: { onUploaded: () => void }) {
         }}
         className="group relative flex cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed border-border/80 bg-surface-2/30 px-6 py-10 text-center transition-all duration-200 hover:border-brand/50 hover:bg-surface-2/60"
       >
-        <div className="grid h-14 w-14 place-items-center rounded-2xl bg-brand/15 border border-brand/20 text-brand-soft transition-transform duration-200 group-hover:scale-110">
+        <div className="grid h-14 w-14 place-items-center rounded-2xl bg-brand/10 border border-brand/20 text-brand-soft">
           {uploading ? <Loader2 className="h-7 w-7 animate-spin" /> : <UploadCloud className="h-7 w-7" />}
         </div>
         <div>

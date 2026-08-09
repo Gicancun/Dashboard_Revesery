@@ -30,8 +30,9 @@ export default {
         mono: ["'JetBrains Mono'", "ui-monospace", "monospace"],
       },
       boxShadow: {
-        card: "0 1px 2px rgb(15 23 42 / 0.04), 0 8px 24px -12px rgb(15 23 42 / 0.12)",
-        "card-hover": "0 1px 2px rgb(15 23 42 / 0.05), 0 16px 40px -16px rgb(15 23 42 / 0.22)",
+        // Flat design — border tipis adalah pemisah utama, shadow hanya jejak sangat halus.
+        card: "0 1px 2px rgb(15 23 42 / 0.03)",
+        "card-hover": "0 1px 2px rgb(15 23 42 / 0.05)",
       },
       borderRadius: { xl: "0.9rem", "2xl": "1.15rem" },
       spacing: { 4.5: "1.125rem" }, // dipakai untuk ukuran ikon 18px (h-4.5/w-4.5)
