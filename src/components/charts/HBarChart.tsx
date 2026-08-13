@@ -15,9 +15,18 @@ export function HBarChart({
 }) {
   const c = useChartTheme();
   const h = height ?? Math.max(220, items.length * 34 + 40);
+  // Canvas tidak bisa resolve var() dari CSS sendiri — kalau caller kirim string
+  // "rgb(var(--x))" literal, ambil nilai sudah-jadi dari token theme yang sama.
+  const TOKEN_MAP: Record<string, string> = {
+    "--churn": c.churn, "--retain": c.retain, "--brand": c.brand, "--info": c.info, "--accent": c.accent, "--warn": c.warn,
+  };
+  const resolveColor = (v: string): string => {
+    const match = v.match(/--[\w-]+/);
+    return match && TOKEN_MAP[match[0]] ? TOKEN_MAP[match[0]] : v;
+  };
   const bg = diverging
     ? items.map((i) => (i.value >= 0 ? c.churn : c.retain))
-    : color ?? c.brand;
+    : resolveColor(color ?? c.info);
   return (
     <ChartFrame height={h}>
       <Bar

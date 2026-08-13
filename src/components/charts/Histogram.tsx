@@ -7,10 +7,10 @@ export function Histogram({ data, height = 280 }: { data: HistogramData; height?
   const c = useChartTheme();
   const datasets = data.by_class
     ? [
-        { label: "Bertahan", data: data.by_class.retain, backgroundColor: c.retain, borderRadius: 4, stack: "s" },
-        { label: "Churn", data: data.by_class.churn, backgroundColor: c.churn, borderRadius: 4, stack: "s" },
+        { label: "Bertahan", data: data.by_class.retain, backgroundColor: c.infoDark, borderRadius: 4, stack: "s" },
+        { label: "Churn", data: data.by_class.churn, backgroundColor: c.info, borderRadius: 4, stack: "s" },
       ]
-    : [{ label: data.feature, data: data.counts, backgroundColor: c.brand, borderRadius: 4 }];
+    : [{ label: data.feature, data: data.counts, backgroundColor: c.info, borderRadius: 4 }];
   return (
     <ChartFrame height={height}>
       <Bar

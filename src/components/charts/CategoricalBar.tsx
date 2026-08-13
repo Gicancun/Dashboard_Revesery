@@ -11,8 +11,8 @@ export function CategoricalBar({ data, height = 280 }: { data: CategoricalDist; 
         data={{
           labels: data.categories,
           datasets: [
-            { label: "Bertahan", data: data.retain, backgroundColor: c.retain, borderRadius: 5, stack: "s" },
-            { label: "Churn", data: data.churn, backgroundColor: c.churn, borderRadius: 5, stack: "s" },
+            { label: "Bertahan", data: data.retain, backgroundColor: c.infoDark, borderRadius: 5, stack: "s" },
+            { label: "Churn", data: data.churn, backgroundColor: c.info, borderRadius: 5, stack: "s" },
           ],
         }}
         options={{

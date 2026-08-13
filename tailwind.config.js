@@ -12,6 +12,10 @@ export default {
           soft: "rgb(var(--brand-soft) / <alpha-value>)",
           fg: "rgb(var(--brand-fg) / <alpha-value>)",
         },
+        info: {
+          DEFAULT: "rgb(var(--info) / <alpha-value>)",
+          dark: "rgb(var(--info-dark) / <alpha-value>)",
+        },
         accent: "rgb(var(--accent) / <alpha-value>)",
         churn: "rgb(var(--churn) / <alpha-value>)",
         retain: "rgb(var(--retain) / <alpha-value>)",

@@ -40,7 +40,7 @@ export default function BusinessInsight() {
               {/* Ranking top 10 */}
               <Card delay={0.05}>
                 <CardHeader title="Top 10 Faktor Penyebab Churn" subtitle="Diurutkan berdasarkan besar pengaruh (|SHAP|)" />
-                <HBarChart items={top10.map((f) => ({ name: f.feature, value: f.impact }))} color="rgb(var(--brand))" />
+                <HBarChart items={top10.map((f) => ({ name: f.feature, value: f.impact }))} color="rgb(var(--info))" />
               </Card>
 
               {/* Increase vs decrease */}

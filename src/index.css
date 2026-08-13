@@ -21,6 +21,9 @@
 
   /* Warna data — dipakai HANYA untuk merepresentasikan makna data,
      bukan dekorasi chrome. */
+  --info:         33 150 243;   /* blue-500 (Material) — seri netral/primer di chart
+                                    (Feature Importance, ROC, Training curve, tren total) */
+  --info-dark:    13 71 161;    /* blue-900 (Material) — pasangan kedua utk donut 2-slice */
   --accent:       14 165 233;   /* sky-500 — skala diverging (korelasi, kurva PR) */
   --churn:        239 68 68;    /* red-500 — churn / risiko */
   --retain:       16 185 129;   /* emerald-500 — retensi / positif */

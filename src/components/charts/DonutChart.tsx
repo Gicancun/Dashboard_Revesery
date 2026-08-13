@@ -11,15 +11,6 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface Slice { label: string; count: number; }
 
-// Palette default — explicit hex agar Chart.js bisa parse langsung
-const DEFAULT_PALETTE = [
-  "#ef4444", // red-500  (churn)
-  "#10b981", // emerald-500 (retain)
-  "#f0f0f0", // zinc-900 (brand — netral)
-  "#0ea5e9", // sky-500 (accent)
-  "#f59e0b", // amber-500 (warn)
-];
-
 export function DonutChart({
   data,
   variant = "doughnut",
@@ -37,16 +28,18 @@ export function DonutChart({
   const GRID = t.grid;
   const TEXT = t.text;
 
-  // Konversi warna CSS var jika perlu — gunakan hardcoded hex saat tidak ada warna eksplisit
+  // Sama seperti chart lain (HBarChart, CategoricalBar, dll): satu sumber warna,
+  // token useChartTheme(), supaya semua visualisasi selalu selaras & ikut tema.
+  const TOKEN_MAP: Record<string, string> = {
+    "--churn": t.churn, "--retain": t.retain, "--brand": t.brand, "--info": t.info, "--info-dark": t.infoDark, "--accent": t.accent, "--warn": t.warn,
+  };
+  const DEFAULT_PALETTE = [t.churn, t.retain, t.info, t.accent, t.warn];
+
+  // Kalau caller kirim string CSS var (mis. "rgb(var(--churn))"), Canvas tidak bisa
+  // meresolve var() itu sendiri — ambil nilai sudah-jadi dari token map di atas.
   const resolveColor = (c: string): string => {
-    if (c.startsWith("rgb(var(")) {
-      // mapping CSS variable ke hex statis
-      if (c.includes("--churn"))  return "#44ef55";
-      if (c.includes("--retain")) return "#0f20de";
-      if (c.includes("--brand"))  return "#4f46e5";
-      if (c.includes("--accent")) return "#0ea5e9";
-      if (c.includes("--warn"))   return "#f59e0b";
-    }
+    const match = c.match(/--[\w-]+/);
+    if (match && TOKEN_MAP[match[0]]) return TOKEN_MAP[match[0]];
     return c;
   };
 

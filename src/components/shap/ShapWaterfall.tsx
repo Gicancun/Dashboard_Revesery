@@ -21,9 +21,9 @@ export function ShapWaterfall({ data, height = 420 }: { data: ShapData["waterfal
     x: values,
     measure: measures,
     connector: { line: { color: "rgba(148,163,184,0.4)" } },
-    increasing: { marker: { color: "#ef4444" } }, // menaikkan risiko churn
-    decreasing: { marker: { color: "#3b82f6" } }, // menurunkan risiko churn
-    totals: { marker: { color: "#18181b" } },
+    increasing: { marker: { color: "#ef4444" } }, // menaikkan risiko churn (merah — konvensi SHAP)
+    decreasing: { marker: { color: "#0d47a1" } }, // menurunkan risiko churn (--info-dark, senada gelap = sisi baik)
+    totals: { marker: { color: "#2196f3" } }, // Base value & Prediksi f(x) — penanda netral (--info)
     hovertemplate: "%{y}<br>%{x:+.3f}<extra></extra>",
   } as unknown as Data;
 

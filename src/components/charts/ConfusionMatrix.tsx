@@ -38,8 +38,8 @@ export function ConfusionMatrix({
                   className="relative grid aspect-[2/1] place-items-center rounded-xl border border-border"
                   style={{
                     background: isDiag
-                      ? `rgb(var(--retain) / ${0.12 + intensity * 0.5})`
-                      : `rgb(var(--churn) / ${0.1 + intensity * 0.45})`,
+                      ? `rgb(var(--info-dark) / ${0.12 + intensity * 0.5})`
+                      : `rgb(var(--info) / ${0.1 + intensity * 0.45})`,
                   }}
                 >
                   <div className="text-center">

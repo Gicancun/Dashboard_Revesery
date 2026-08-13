@@ -10,7 +10,7 @@ export function Boxplot({ data, height = 280 }: { data: BoxplotData; height?: nu
   const w = 520;
   const x = (v: number) => pad + ((v - lo) / range) * (w - pad * 2);
   const rowH = 54;
-  const colors = ["var(--retain)", "var(--churn)", "var(--brand)", "var(--accent)"];
+  const colors = ["var(--info-dark)", "var(--info)", "var(--brand)", "var(--accent)"];
 
   return (
     <div className="w-full overflow-x-auto">

@@ -15,6 +15,7 @@ import { ShapForce } from "@/components/shap/ShapForce";
 import { ShapDecision } from "@/components/shap/ShapDecision";
 import { ShapDependence } from "@/components/shap/ShapDependence";
 import { ShapHtmlEmbed } from "@/components/shap/ShapHtmlEmbed";
+import { pct, score } from "@/utils/format";
 import type { ShapData } from "@/types";
 
 function Scope({ type }: { type: "global" | "local" }) {
@@ -24,6 +25,37 @@ function Scope({ type }: { type: "global" | "local" }) {
   } as const;
   const { icon: Icon, label, tone } = map[type];
   return <span className={`chip ${tone}`}><Icon className="h-3.5 w-3.5" /> {label}</span>;
+}
+
+/** Narasi akademik Force Plot — dihitung dari data pelanggan yang sedang ditampilkan,
+ * bukan teks generik, supaya angka & fitur dominannya selalu sesuai apa yang terlihat. */
+function ForceInterpretation({ force }: { force: NonNullable<ShapData["force"]> }) {
+  const pos = [...force.features].filter((f) => f.value > 0).sort((a, b) => b.value - a.value);
+  const neg = [...force.features].filter((f) => f.value < 0).sort((a, b) => a.value - b.value);
+  const topPos = pos[0];
+  const topNeg = neg[0];
+  const delta = force.prediction - force.base_value;
+
+  return (
+    <>
+      Force plot menampilkan "tarik-menarik" antar fitur pada satu prediksi. Fitur merah mendorong ke arah churn,
+      fitur biru menahannya — panjang segmen sebanding dengan besar kontribusinya. Untuk pelanggan ini, prediksi
+      model mencapai <strong className="text-fg">{pct(force.prediction)}</strong> probabilitas churn, bergerak{" "}
+      {delta >= 0 ? "naik" : "turun"} <strong className="text-fg">{score(Math.abs(delta))}</strong> dari base value{" "}
+      <strong className="text-fg">{score(force.base_value)}</strong> (rata-rata prediksi model sebelum melihat
+      fitur spesifik pelanggan).{" "}
+      {topPos && (
+        <>
+          Faktor pendorong terbesar adalah <em>{topPos.feature}</em> (+{score(topPos.value)})
+          {topNeg ? (
+            <>, ditahan sebagian oleh <em>{topNeg.feature}</em> ({score(topNeg.value)}).</>
+          ) : (
+            <>, tanpa faktor penahan (biru) yang berarti — seluruh fitur teratas kompak mendorong ke arah yang sama, menandakan profil risiko pelanggan ini cukup konsisten.</>
+          )}
+        </>
+      )}
+    </>
+  );
 }
 
 export default function Shap() {
@@ -71,7 +103,7 @@ export default function Shap() {
               <Card delay={0.1}>
                 <CardHeader title="SHAP Bar Plot" subtitle="Rata-rata |SHAP| — kepentingan fitur global" right={<Scope type="global" />} />
                 {s.global_importance?.length ? (
-                  <HBarChart items={s.global_importance.slice(0, 10).map((f) => ({ name: f.feature, value: f.value }))} color="rgb(var(--brand))" />
+                  <HBarChart items={s.global_importance.slice(0, 10).map((f) => ({ name: f.feature, value: f.value }))} color="rgb(var(--info))" />
                 ) : <EmptyState text="Data global importance belum tersedia." />}
                 <AcademicNote>
                   Bar plot merangkum rata-rata besaran absolut nilai SHAP setiap fitur. Semakin panjang batang,
@@ -96,8 +128,10 @@ export default function Shap() {
                 <CardHeader title="SHAP Force Plot" subtitle="Gaya pendorong prediksi" right={<Scope type="local" />} />
                 {s.force ? <ShapForce data={s.force} /> : (s.html?.force ? <ShapHtmlEmbed html={s.html.force} height={180} /> : <EmptyState text="Data force belum tersedia." />)}
                 <AcademicNote>
-                  Force plot menampilkan "tarik-menarik" antar fitur pada satu prediksi. Fitur merah mendorong ke arah
-                  churn, fitur biru menahannya. Panjang segmen sebanding dengan besar kontribusinya.
+                  {s.force ? <ForceInterpretation force={s.force} /> : (
+                    <>Force plot menampilkan "tarik-menarik" antar fitur pada satu prediksi. Fitur merah mendorong ke
+                    arah churn, fitur biru menahannya. Panjang segmen sebanding dengan besar kontribusinya.</>
+                  )}
                 </AcademicNote>
               </Card>
             </div>

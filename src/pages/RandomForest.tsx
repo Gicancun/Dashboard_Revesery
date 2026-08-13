@@ -86,7 +86,7 @@ export default function RandomForest() {
                   diagonal
                   xLabel="False Positive Rate"
                   yLabel="True Positive Rate"
-                  series={[{ label: `ROC (AUC ${score(m.model.roc_auc)})`, x: m.roc_curve.fpr, y: m.roc_curve.tpr, color: c.brand }]}
+                  series={[{ label: `ROC (AUC ${score(m.model.roc_auc)})`, x: m.roc_curve.fpr, y: m.roc_curve.tpr, color: c.info }]}
                 />
                 <AcademicNote>
                   Kurva ROC menggambarkan trade-off antara <em>true positive rate</em> dan <em>false positive rate</em>.
@@ -137,7 +137,7 @@ export default function RandomForest() {
                   xLabel="Proporsi data latih"
                   yLabel="Skor"
                   series={[
-                    { label: "Training", x: m.learning_curve.train_sizes, y: m.learning_curve.train_scores, color: c.brand },
+                    { label: "Training", x: m.learning_curve.train_sizes, y: m.learning_curve.train_scores, color: c.info },
                     { label: "Validation", x: m.learning_curve.train_sizes, y: m.learning_curve.val_scores, color: c.retain },
                   ]}
                 />

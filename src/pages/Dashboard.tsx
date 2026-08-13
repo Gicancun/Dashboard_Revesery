@@ -114,23 +114,23 @@ export default function Dashboard() {
                     { label: "Churn", count: m.churned_customers },
                     { label: "Aktif", count: m.active_customers },
                   ]}
-                  colors={["rgb(var(--churn))", "rgb(var(--retain))"]}
+                  colors={["rgb(var(--info))", "rgb(var(--info-dark))"]}
                   height={200}
                 />
                 <div className="mt-3 grid grid-cols-2 gap-2">
-                  <div className="flex items-center gap-2 rounded-xl bg-churn/10 border border-churn/20 px-3 py-2">
-                    <span className="h-2.5 w-2.5 rounded-full bg-churn shrink-0" />
+                  <div className="flex items-center gap-2 rounded-xl bg-info/10 border border-info/20 px-3 py-2">
+                    <span className="h-2.5 w-2.5 rounded-full bg-info shrink-0" />
                     <div>
-                      <div className="text-[10px] font-semibold text-churn uppercase tracking-wide">Churn</div>
+                      <div className="text-[10px] font-semibold text-info uppercase tracking-wide">Churn</div>
                       <div className="font-display text-base font-bold text-fg tabular-nums">
                         {((m.churned_customers / Math.max(m.total_customers, 1)) * 100).toFixed(1)}%
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 rounded-xl bg-retain/10 border border-retain/20 px-3 py-2">
-                    <span className="h-2.5 w-2.5 rounded-full bg-retain shrink-0" />
+                  <div className="flex items-center gap-2 rounded-xl bg-info-dark/10 border border-info-dark/20 px-3 py-2">
+                    <span className="h-2.5 w-2.5 rounded-full bg-info-dark shrink-0" />
                     <div>
-                      <div className="text-[10px] font-semibold text-retain uppercase tracking-wide">Aktif</div>
+                      <div className="text-[10px] font-semibold text-info-dark uppercase tracking-wide">Aktif</div>
                       <div className="font-display text-base font-bold text-fg tabular-nums">
                         {((m.active_customers / Math.max(m.total_customers, 1)) * 100).toFixed(1)}%
                       </div>
@@ -149,22 +149,22 @@ export default function Dashboard() {
                     { label: "Aktif", count: m.active_customers },
                     { label: "Churn", count: m.churned_customers },
                   ]}
-                  colors={["rgb(var(--retain))", "rgb(var(--churn))"]}
+                  colors={["rgb(var(--info-dark))", "rgb(var(--info))"]}
                   height={200}
                 />
                 {/* Stat bawah donut */}
                 <div className="mt-3 space-y-2">
-                  <div className="flex items-center justify-between rounded-xl bg-retain/10 border border-retain/20 px-3 py-2">
+                  <div className="flex items-center justify-between rounded-xl bg-info-dark/10 border border-info-dark/20 px-3 py-2">
                     <div className="flex items-center gap-2">
-                      <span className="h-2.5 w-2.5 rounded-full bg-retain" />
-                      <span className="text-xs font-semibold text-retain">Aktif</span>
+                      <span className="h-2.5 w-2.5 rounded-full bg-info-dark" />
+                      <span className="text-xs font-semibold text-info-dark">Aktif</span>
                     </div>
                     <span className="font-display font-bold text-fg tabular-nums">{m.active_customers.toLocaleString("id-ID")}</span>
                   </div>
-                  <div className="flex items-center justify-between rounded-xl bg-churn/10 border border-churn/20 px-3 py-2">
+                  <div className="flex items-center justify-between rounded-xl bg-info/10 border border-info/20 px-3 py-2">
                     <div className="flex items-center gap-2">
-                      <span className="h-2.5 w-2.5 rounded-full bg-churn" />
-                      <span className="text-xs font-semibold text-churn">Churn</span>
+                      <span className="h-2.5 w-2.5 rounded-full bg-info" />
+                      <span className="text-xs font-semibold text-info">Churn</span>
                     </div>
                     <span className="font-display font-bold text-fg tabular-nums">{m.churned_customers.toLocaleString("id-ID")}</span>
                   </div>

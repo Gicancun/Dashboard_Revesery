@@ -32,7 +32,7 @@ export default function Eda() {
             <div className="grid gap-4 lg:grid-cols-3">
               <Card delay={0.05}>
                 <CardHeader title="Distribusi Churn" subtitle="Proporsi pelanggan churn vs bertahan" />
-                <DonutChart data={e.churn_distribution} colors={["rgb(var(--retain))", "rgb(var(--churn))"]} height={240} />
+                <DonutChart data={e.churn_distribution} colors={["rgb(var(--info-dark))", "rgb(var(--info))"]} height={240} />
               </Card>
               {e.categorical.slice(0, 2).map((c, i) => (
                 <Card key={c.feature} delay={0.1 + i * 0.05}>

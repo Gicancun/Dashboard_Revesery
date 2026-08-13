@@ -166,7 +166,7 @@ export default function Dataset() {
                     subtitle={`Distribusi target "${d.target}"`}
                     right={<span className="chip bg-warn/15 border border-warn/20 text-warn"><Scale className="h-3.5 w-3.5" /> Rasio {ratio}:1</span>}
                   />
-                  <DonutChart data={d.class_distribution} colors={["rgb(var(--retain))", "rgb(var(--churn))"]} height={240} />
+                  <DonutChart data={d.class_distribution} colors={["rgb(var(--info-dark))", "rgb(var(--info))"]} height={240} />
                   <AcademicNote>
                     Ketidakseimbangan kelas ({ratio}:1) membuat metrik <em>precision</em>, <em>recall</em>, dan <em>F1-score</em> jauh lebih krusial dibandingkan sekadar <em>accuracy</em>. Penyeimbangan menggunakan <code>class_weight='balanced'</code> diterapkan pada Random Forest.
                   </AcademicNote>

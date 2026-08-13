@@ -9,7 +9,7 @@ const readVar = (name: string): string => {
 };
 const rgb = (name: string, a = 1): string => {
   const v = readVar(name) || "0 0 0";
-  return `rgb(${v.split(/\s+/).join(", ")} / ${a})`;
+  return `rgb(${v} / ${a})`;
 };
 
 export function useChartTheme() {
@@ -19,6 +19,9 @@ export function useChartTheme() {
     () => ({
       brand: rgb("--brand"),
       brandFill: rgb("--brand", 0.14),
+      info: rgb("--info"),
+      infoFill: rgb("--info", 0.14),
+      infoDark: rgb("--info-dark"),
       accent: rgb("--accent"),
       churn: rgb("--churn"),
       churnFill: rgb("--churn", 0.14),

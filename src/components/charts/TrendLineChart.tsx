@@ -14,8 +14,8 @@ interface Point { label: string; total: number; churned: number; }
 
 export function TrendLineChart({ data, height = 300 }: { data: Point[]; height?: number }) {
   const t = useChartTheme();
-  const BRAND   = t.brand;
-  const BRAND_F = t.brandFill;
+  const BRAND   = t.info;
+  const BRAND_F = t.infoFill;
   const CHURN   = t.churn;
   const CHURN_F = t.churnFill;
   const GRID    = t.grid;
