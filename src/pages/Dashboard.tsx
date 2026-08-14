@@ -51,7 +51,7 @@ export default function Dashboard() {
                     Performa Model Random Forest: <span className="text-gradient">ROC-AUC {score(m.model.roc_auc)}</span>
                   </h2>
                   <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
-                    Dari total <strong className="text-fg">{m.total_customers.toLocaleString("id-ID")}</strong> pelanggan, terdeteksi <strong className="text-churn">{m.churned_customers.toLocaleString("id-ID")}</strong> ({pct(m.churn_rate)}) mengalami churn. Model berhasil memprediksi pelanggan churn dengan F1-Score <strong className="text-brand">{score(m.model.f1_score)}</strong>.
+                    Dari total <strong className="text-fg">{m.total_customers.toLocaleString("id-ID")}</strong> pelanggan, terdeteksi <strong className="text-churn">{m.churned_customers.toLocaleString("id-ID")}</strong> ({pct(m.churned_customers / Math.max(m.total_customers, 1))}) mengalami churn. Model berhasil memprediksi pelanggan churn dengan F1-Score <strong className="text-brand">{score(m.model.f1_score)}</strong>.
                   </p>
                 </div>
                 <div className="flex shrink-0 items-center gap-3">
@@ -71,7 +71,7 @@ export default function Dashboard() {
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
               <KpiCard label="Jumlah Customer" value={m.total_customers} icon={Users} tone="brand" delay={0} />
               <KpiCard label="Customer Churn" value={m.churned_customers} icon={UserMinus} tone="churn" delay={0.05} />
-              <KpiCard label="Churn Rate" value={m.churn_rate} icon={TrendingDown} tone="churn" format={(v) => pct(v)} delay={0.1} />
+              <KpiCard label="Churn Rate" value={m.churned_customers / Math.max(m.total_customers, 1)} icon={TrendingDown} tone="churn" format={(v) => pct(v)} delay={0.1} />
               <KpiCard label="Customer Aktif" value={m.active_customers} icon={Activity} tone="retain" delay={0.15} />
               <KpiCard label="Accuracy Model" value={m.model.accuracy} icon={Gauge} tone="brand" format={score} delay={0.2} />
               <KpiCard label="Precision" value={m.model.precision} icon={Crosshair} tone="brand" format={score} delay={0.25} />
